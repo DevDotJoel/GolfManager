@@ -1,8 +1,15 @@
+using GolfManager.Application.Interfaces;
+using GolfManager.Application.Services;
+using GolfManager.Domain.Common;
+using GolfManager.Infrastructure.Persistence.UnitOfWork;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddScoped<IEventService, EventService>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

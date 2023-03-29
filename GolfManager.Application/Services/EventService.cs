@@ -1,4 +1,5 @@
-﻿using GolfManager.Application.Dtos.Event;
+﻿using AutoMapper;
+using GolfManager.Application.Dtos.Event;
 using GolfManager.Application.Interfaces;
 using GolfManager.Domain.Common;
 using GolfManager.Domain.Entities;
@@ -13,9 +14,12 @@ namespace GolfManager.Application.Services
     public class EventService : IEventService
     {
         private readonly IUnitOfWork _unitOfWork;
-        public EventService( IUnitOfWork unitOfWork)
+        private readonly IMapper _mapper;
+        public EventService( IUnitOfWork unitOfWork, IMapper mapper)
         {
             unitOfWork = _unitOfWork;
+            _mapper = mapper;
+              
 
         }
         public async Task AddEvent(CreateEventDto eventCreate)
@@ -25,9 +29,9 @@ namespace GolfManager.Application.Services
             await _unitOfWork.SaveChangesAsync();
         }
 
-        public Task<EventDto> GetAllEvents()
+        public async Task<List<EventDto>> GetAllEvents()
         {
-            throw new NotImplementedException();
+            return _mapper.Map<List<EventDto>>(await _unitOfWork.EventRepository.GetAllAsync());
         }
     }
 }

@@ -10,4 +10,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GolfManager.Application\GolfManager.Application.csproj" />
+    <ProjectReference Include="..\GolfManager.Infrastructure\GolfManager.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

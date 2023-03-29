@@ -9,7 +9,7 @@ namespace GolfManager.Application.Interfaces
 {
     public interface IEventService
     {
-        Task<EventDto> GetAllEvents();
+        Task<List<EventDto>> GetAllEvents();
         Task AddEvent( CreateEventDto eventCreate);
     }
 }
