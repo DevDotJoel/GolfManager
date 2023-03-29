@@ -17,7 +17,7 @@ namespace GolfManager.Application.Services
         private readonly IMapper _mapper;
         public EventService( IUnitOfWork unitOfWork, IMapper mapper)
         {
-            unitOfWork = _unitOfWork;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
               
 
