@@ -30,6 +30,11 @@ namespace GolfManager.Api.Controllers
         {           
             return Ok(await _eventService.AddEvent(createEvent));
         }
+        [HttpPut]
+        public async Task<IActionResult> UpdateEvent(CreateUpdateEventDto createEvent)
+        {
+            return Ok(await _eventService.UpdateEvent(createEvent));
+        }
 
     }
 }

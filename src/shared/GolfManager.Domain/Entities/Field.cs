@@ -20,12 +20,21 @@ namespace GolfManager.Domain.Entities
             Name = name;
             Description = description;
             Capacity = capacity;
-
-
         }
         private Field()
         {
-
+        } 
+        public void SetName(string name)
+        {
+            Name = name;
+        }
+        public void SetDescription(string description)
+        {
+            Description = description;
+        }
+        public void SetCapacity(int capacity)
+        {
+            Capacity = capacity;
         }
     }
 }

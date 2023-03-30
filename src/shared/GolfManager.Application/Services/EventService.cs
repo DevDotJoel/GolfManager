@@ -39,5 +39,18 @@ namespace GolfManager.Application.Services
         {
            return _mapper.Map<EventDto>(await _unitOfWork.EventRepository.GetByIdAsync(id));
         }
+
+        public async Task<EventDto> UpdateEvent(CreateUpdateEventDto eventCreate)
+        {
+                  
+            var currentEvent= await _unitOfWork.EventRepository.GetByIdAsync(eventCreate.Id);
+            currentEvent.SetName(eventCreate.Name);
+            currentEvent.SetDescription(eventCreate.Description);
+            _unitOfWork.EventRepository.Update(currentEvent);
+            await _unitOfWork.SaveChangesAsync();
+            return _mapper.Map<EventDto>(currentEvent);
+
+        
+        }
     }
 }

@@ -12,5 +12,6 @@ namespace GolfManager.Application.Interfaces
         Task<List<CustomerDto>> GetAllCustomers();
         Task<CustomerDto> GetCustomerById(int id);
         Task<CustomerDto> AddCustomer(CreateUpdateCustomerDto customer);
+        Task<CustomerDto> UpdateCustomer(CreateUpdateCustomerDto customer);
     }
 }

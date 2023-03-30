@@ -15,9 +15,10 @@ namespace GolfManager.Application.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        public CustomerService( IMapper mapper)
+        public CustomerService( IMapper mapper, IUnitOfWork unitOfWork)
         {
             _mapper = mapper;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<CustomerDto> AddCustomer(CreateUpdateCustomerDto customer)
@@ -36,6 +37,17 @@ namespace GolfManager.Application.Services
         public async Task<CustomerDto> GetCustomerById(int id)
         {
             return _mapper.Map<CustomerDto>(await _unitOfWork.CustomerRepository.GetByIdAsync(id));
+        }
+
+        public async Task<CustomerDto> UpdateCustomer(CreateUpdateCustomerDto customer)
+        {
+            var currentCustomer= await _unitOfWork.CustomerRepository.GetByIdAsync(customer.Id);
+            currentCustomer.SetName(customer.Name);
+            currentCustomer.SetPhoneNumber(customer.PhoneNumber);
+            _unitOfWork.CustomerRepository.Update(currentCustomer);
+            await _unitOfWork.SaveChangesAsync();
+            return _mapper.Map<CustomerDto>(currentCustomer);
+
         }
     }
 }

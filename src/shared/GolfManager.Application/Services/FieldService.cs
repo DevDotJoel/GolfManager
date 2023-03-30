@@ -1,5 +1,6 @@
 ﻿
 using AutoMapper;
+using GolfManager.Application.Dtos.Event;
 using GolfManager.Application.Dtos.Field;
 using GolfManager.Application.Interfaces;
 using GolfManager.Domain.Common;
@@ -38,6 +39,16 @@ namespace GolfManager.Application.Services
         public async Task<FieldDto> GetFieldById(int id)
         {
           return _mapper.Map<FieldDto>(await _unitOfWork.FieldRepository.GetByIdAsync(id));
+        }
+
+        public async Task<FieldDto> UpdateField(CreateUpdateFieldDto field)
+        {
+            var currentField = await _unitOfWork.FieldRepository.GetByIdAsync(field.Id);
+            currentField.SetName(field.Name);
+            currentField.SetDescription(field.Description);
+            _unitOfWork.FieldRepository.Update(currentField);
+            await _unitOfWork.SaveChangesAsync();
+            return _mapper.Map<FieldDto>(currentField);
         }
     }
 }

@@ -31,5 +31,10 @@ namespace GolfManager.Api.Controllers
         {
             return Ok(await _customerService.AddCustomer(createCustomer));
         }
+        [HttpPut]
+        public async Task<IActionResult> UpdateCustomer(CreateUpdateCustomerDto createCustomer)
+        {
+            return Ok(await _customerService.UpdateCustomer(createCustomer));
+        }
     }
 }

@@ -29,5 +29,10 @@ namespace GolfManager.Api.Controllers
         {
             return Ok(await _fieldService.AddField(field));
         }
+        [HttpPut]
+        public async Task<IActionResult> UpdateField(CreateUpdateFieldDto field)
+        {
+            return Ok(await _fieldService.UpdateField(field));
+        }
     }
 }

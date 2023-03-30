@@ -22,7 +22,14 @@ namespace GolfManager.Domain.Entities
         }
         private Customer()
         {
-
+        }
+        public void SetName(string name)
+        {
+            Name = name;
+        }
+        public void SetPhoneNumber(string phoneNumber)
+        {
+            PhoneNumber = phoneNumber;
         }
     }
 }

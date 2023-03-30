@@ -1,8 +1,20 @@
+using GolfManager.Application.Interfaces;
+using GolfManager.Application.Services;
+using GolfManager.Domain.Common;
+using GolfManager.Infrastructure.Persistence.Data;
+using GolfManager.Infrastructure.Persistence.UnitOfWork;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddDbContext<GolfManagerContext>(options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
+builder.Services.AddScoped<IEventService, EventService>();
+builder.Services.AddScoped<IFieldService, FieldService>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

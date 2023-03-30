@@ -26,5 +26,17 @@ namespace GolfManager.Domain.Entities
         {
 
         }
+        public void SetName(string name )
+        {
+            Name = name;
+        }
+        public void SetDescription(string description)
+        {
+            Description = description;
+        }
+        public void SetFieldId(int fieldId)
+        {
+            FieldId = fieldId;
+        }
     }
 }
