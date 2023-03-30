@@ -1,15 +1,14 @@
 ﻿@page
-@model GolfManager.RazorWeb.Pages.Customer.EditModel
+@model GolfManager.RazorWeb.Pages.Customer.CreateModel
 @{
 }
-
 <div class="row">
     <div class="col">
-        <h1>Edit Customer</h1>
+        <h1>Create Customer</h1>
     </div>
     <div class="col d-flex justify-content-end">
         <div>
-            <a asp-page="/Customer/Index" asp class="btn btn-primary">Back</a>
+            <a asp-page="/Customer/Index"  asp class="btn btn-primary">Back</a>
         </div>
     </div>
 </div>
@@ -21,23 +20,24 @@
             <div class="card-body">
                 <form method="post">
                     <div class="row mt-3 ">
-                        @Html.HiddenFor(x => x.Customer.Id)
                         <div class="col ">
                             <label>Name</label>
                             <input asp-for="Customer.Name" type="text" class="form-control" />
+                            <span asp-validation-for="Customer.Name" class="text-danger"></span>
 
                         </div>
                     </div>
                     <div class="row mt-3 d-flex justify-content-center">
                         <div class="col  ">
-                                <label>Phone Number</label>
-                                <input asp-for="Customer.PhoneNumber" type="text" class="form-control" />
+                            <label>Phone Number</label>
+                            <input asp-for="Customer.PhoneNumber" type="text" class="form-control" />
+                            <span asp-validation-for="Customer.PhoneNumber" class="text-danger"></span>
 
                         </div>
                     </div>
                     <div class="row mt-3 ">
                         <div class="col d-flex justify-content-end">
-                            <button type="submit" class="btn btn-primary shadow"> Submit</button>
+                            <button type="submit" class="btn btn-primary"> Submit</button>
                         </div>
                     </div>
 
