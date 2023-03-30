@@ -11,9 +11,21 @@ namespace GolfManager.Domain.Entities
     public class Field:Audit
     {
         [Key]
-        public int Id { get;  set; }
-        public string Name { get;  set; }
-        public string Description { get; set; }
-        public int Capacity { get; set; }
+        public int Id { get; private  set; }
+        public string Name { get; private set; }
+        public string Description { get; private set; }
+        public int Capacity { get; private set; }
+        public Field( string name,string description, int capacity)
+        {
+            Name = name;
+            Description = description;
+            Capacity = capacity;
+
+
+        }
+        private Field()
+        {
+
+        }
     }
 }

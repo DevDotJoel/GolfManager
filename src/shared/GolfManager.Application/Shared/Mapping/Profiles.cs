@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using GolfManager.Application.Dtos.Customer;
 using GolfManager.Application.Dtos.Event;
+using GolfManager.Application.Dtos.Field;
 using GolfManager.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -14,6 +16,8 @@ namespace GolfManager.Application.Shared.Mapping
         public Profiles()
         {
             CreateMap<Event, EventDto>();
+            CreateMap<Field, FieldDto>();
+            CreateMap<Customer, CustomerDto>();
         }
     }
 }

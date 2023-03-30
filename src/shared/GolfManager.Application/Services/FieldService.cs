@@ -3,6 +3,7 @@ using AutoMapper;
 using GolfManager.Application.Dtos.Field;
 using GolfManager.Application.Interfaces;
 using GolfManager.Domain.Common;
+using GolfManager.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,25 +14,30 @@ namespace GolfManager.Application.Services
 {
     public class FieldService : IFieldService
     {
-        private readonly IUnitOfWork unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        public FieldService(IUnitOfWork)
+        public FieldService(IUnitOfWork unitOfWork,IMapper mapper)
         {
 
+            _unitOfWork= unitOfWork;
+            _mapper= mapper;
         }
-        public Task AddField(CreateUpdateFieldDto field)
+        public async Task<FieldDto> AddField(CreateUpdateFieldDto field)
         {
-            throw new NotImplementedException();
+            var fieldToAdd = new Field(field.Name, field.Description, field.Capacity);
+            await _unitOfWork.FieldRepository.AddAsync(fieldToAdd);
+            await _unitOfWork.SaveChangesAsync();
+            return _mapper.Map<FieldDto>(fieldToAdd);
         }
 
-        public Task<List<FieldDto>> GetAllFields()
+        public async Task<List<FieldDto>> GetAllFields()
         {
-            throw new NotImplementedException();
+            return _mapper.Map<List<FieldDto>>(await _unitOfWork.FieldRepository.GetAllAsync());
         }
 
-        public Task<FieldDto> GetFieldById(int id)
+        public async Task<FieldDto> GetFieldById(int id)
         {
-            throw new NotImplementedException();
+          return _mapper.Map<FieldDto>(await _unitOfWork.FieldRepository.GetByIdAsync(id));
         }
     }
 }

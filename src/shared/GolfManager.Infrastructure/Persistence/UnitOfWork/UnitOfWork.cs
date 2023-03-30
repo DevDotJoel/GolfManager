@@ -13,10 +13,15 @@ namespace GolfManager.Infrastructure.Persistence.UnitOfWork
     public class UnitOfWork : IUnitOfWork
     {
         public IEventRepository EventRepository { get; set; }
+        public IFieldRepository FieldRepository { get; set; }
+        public ICustomerRepository CustomerRepository { get; set; }
+
         private GolfManagerContext _context;
         public UnitOfWork( GolfManagerContext context)
         {
             EventRepository = new EventRepository(context);
+            FieldRepository= new FieldRepository(context);
+            CustomerRepository= new CustomerRepository(context);
             _context = context;
         }
 

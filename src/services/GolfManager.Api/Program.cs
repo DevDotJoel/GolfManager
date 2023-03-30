@@ -13,6 +13,8 @@ builder.Services.AddControllers();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddDbContext<GolfManagerContext>(options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
 builder.Services.AddScoped<IEventService, EventService>();
+builder.Services.AddScoped<IFieldService, FieldService>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

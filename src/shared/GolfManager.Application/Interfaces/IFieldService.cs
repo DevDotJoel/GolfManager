@@ -11,6 +11,6 @@ namespace GolfManager.Application.Interfaces
     {
         Task<List<FieldDto>> GetAllFields();
         Task<FieldDto> GetFieldById(int id);
-        Task AddField(CreateUpdateFieldDto field);
+        Task<FieldDto> AddField(CreateUpdateFieldDto field);
     }
 }

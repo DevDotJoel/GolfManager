@@ -22,11 +22,12 @@ namespace GolfManager.Application.Services
               
 
         }
-        public async Task AddEvent(CreateUpdateEventDto eventCreate)
+        public async Task<EventDto> AddEvent(CreateUpdateEventDto eventCreate)
         {
             var eventToAdd = new Event(eventCreate.Name,eventCreate.Description,eventCreate.FieldId);
             await _unitOfWork.EventRepository.AddAsync(eventToAdd);
             await _unitOfWork.SaveChangesAsync();
+            return _mapper.Map<EventDto>(eventToAdd);
         }
 
         public async Task<List<EventDto>> GetAllEvents()

@@ -10,6 +10,8 @@ namespace GolfManager.Domain.Common
     public interface IUnitOfWork
     {
         IEventRepository EventRepository { get; }
+        IFieldRepository FieldRepository { get; }
+        ICustomerRepository CustomerRepository { get; }
         Task SaveChangesAsync();
     }
 }

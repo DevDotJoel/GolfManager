@@ -11,6 +11,6 @@ namespace GolfManager.Application.Interfaces
     {
         Task<List<EventDto>> GetAllEvents();
         Task<EventDto> GetEventById(int id);
-        Task AddEvent( CreateUpdateEventDto eventCreate);
+        Task<EventDto> AddEvent( CreateUpdateEventDto eventCreate);
     }
 }

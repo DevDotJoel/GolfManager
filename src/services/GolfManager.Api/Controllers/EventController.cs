@@ -27,9 +27,8 @@ namespace GolfManager.Api.Controllers
         }
         [HttpPost]
         public async Task<IActionResult> CreateEvent(CreateUpdateEventDto createEvent)
-        {
-            await _eventService.AddEvent(createEvent);
-            return Ok("Added with success");
+        {           
+            return Ok(await _eventService.AddEvent(createEvent));
         }
 
     }

@@ -19,8 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GolfManager.Application\GolfManager.Application.csproj" />
-    <ProjectReference Include="..\GolfManager.Infrastructure\GolfManager.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\shared\GolfManager.Application\GolfManager.Application.csproj" />
+    <ProjectReference Include="..\..\shared\GolfManager.Infrastructure\GolfManager.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
