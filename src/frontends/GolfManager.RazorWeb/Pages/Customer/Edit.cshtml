@@ -1,0 +1,49 @@
+﻿@page
+@model GolfManager.RazorWeb.Pages.Customer.EditModel
+@{
+}
+
+<div class="row">
+    <div class="col">
+        <h1>Edit Customer</h1>
+    </div>
+    <div class="col d-flex justify-content-end">
+        <div>
+            <a class="btn btn-primary">Back</a>
+        </div>
+    </div>
+</div>
+<hr>
+
+<div class="row d-flex justify-content-center">
+    <div class="col col-sm-6">
+        <div class="card rounded-4 shadow">
+            <div class="card-body">
+                <form method="post">
+                    <div class="row mt-3 ">
+                        @Html.HiddenFor(x => x.Customer.Id)
+                        <div class="col ">
+                            <label>Name</label>
+                            <input asp-for="Customer.Name" type="text" class="form-control" />
+
+                        </div>
+                    </div>
+                    <div class="row mt-3 d-flex justify-content-center">
+                        <div class="col  ">
+                                <label>Phone Number</label>
+                                <input asp-for="Customer.PhoneNumber" type="text" class="form-control" />
+
+                        </div>
+                    </div>
+                    <div class="row mt-3 ">
+                        <div class="col d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary"> Submit</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

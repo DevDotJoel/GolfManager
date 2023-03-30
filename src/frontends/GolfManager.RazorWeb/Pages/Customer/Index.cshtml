@@ -1,0 +1,38 @@
+﻿@page
+@model GolfManager.RazorWeb.Pages.Customer.IndexModel
+@{
+}
+
+<div class="row">
+    <div class="col">
+        <h1>Customers</h1>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th >Name</th>
+                    <th >PhoneNumber</th>
+                    <th >Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var customer in Model.Customers)
+                {
+                 <tr>
+                    <td>@customer.Name</td>
+                    <td>@customer.PhoneNumber</td>
+                    <td>
+                        <a asp-page="/Customer/Edit" asp-route-id="@customer.Id" class="btn btn-primary">Edit</a>
+                        <a asp-page="/Customer/Delete" asp-route-id="@customer.Id" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+                }
+
+            </tbody>
+</table>
+    </div>
+</div>
