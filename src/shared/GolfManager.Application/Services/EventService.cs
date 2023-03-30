@@ -22,7 +22,7 @@ namespace GolfManager.Application.Services
               
 
         }
-        public async Task AddEvent(CreateEventDto eventCreate)
+        public async Task AddEvent(CreateUpdateEventDto eventCreate)
         {
             var eventToAdd = new Event(eventCreate.Name,eventCreate.Description,eventCreate.FieldId);
             await _unitOfWork.EventRepository.AddAsync(eventToAdd);
@@ -32,6 +32,11 @@ namespace GolfManager.Application.Services
         public async Task<List<EventDto>> GetAllEvents()
         {
             return _mapper.Map<List<EventDto>>(await _unitOfWork.EventRepository.GetAllAsync());
+        }
+
+        public async Task<EventDto> GetEventById(int id)
+        {
+           return _mapper.Map<EventDto>(await _unitOfWork.EventRepository.GetByIdAsync(id));
         }
     }
 }

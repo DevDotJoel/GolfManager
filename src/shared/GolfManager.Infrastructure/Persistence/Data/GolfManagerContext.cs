@@ -17,6 +17,7 @@ namespace GolfManager.Infrastructure.Persistence.Data
         public DbSet<Event> Events { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Field> Fields { get; set; }
+        public DbSet<EventCustomer> EventCustomers { get; set; }
 
     }
 }
